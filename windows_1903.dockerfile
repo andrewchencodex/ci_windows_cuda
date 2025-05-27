@@ -8,5 +8,5 @@ RUN choco install cmake -y --installargs '"ADD_CMAKE_TO_PATH=System"'
 RUN choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional" -y
 RUN choco install visualstudio2019-workload-vctools -y
 
-RUN choco install cuda -y
+RUN choco install cuda --version=12.2 -y
 RUN copy "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\BuildCustomizations\*.*" "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Microsoft\VC\v160\BuildCustomizations"
