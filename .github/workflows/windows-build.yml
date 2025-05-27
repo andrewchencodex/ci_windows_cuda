@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: setup
       run: |
-        choco install cuda -y
+        choco install cuda --version=12.2 -y
     - name: configure
       run: |
         $env:ChocolateyInstall = Convert-Path "$((Get-Command choco).Path)\..\.."
