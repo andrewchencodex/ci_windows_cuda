@@ -30,6 +30,8 @@ Note. using `"` in dockerfile of windows server gives some error.
 Use `choco install cuda` or local installer for everything is failed.
 
 Use local installer to install the cuda library without MSVC integration and then copy the files to the corresponding path.
+In the Dockerfiles, the installer is downloaded using `Invoke-WebRequest` to avoid
+issues seen when using `curl.exe` on some Windows Server configurations.
 When using the local installer, use block command and get the return code.
 
 powershell:

@@ -16,7 +16,8 @@ RUN choco install visualstudio2019-workload-vctools -y
 
 
 # For some reason, servercore can not install cuda by choco
-RUN curl.exe -L https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_windows.exe --output cuda.exe
+# Use Invoke-WebRequest instead of curl for a more reliable download
+RUN Invoke-WebRequest -Uri https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_windows.exe -OutFile cuda.exe
 RUN 7z x cuda.exe -o"cuda"
 RUN Start-Process -FilePath '.\cuda\setup.exe' -ArgumentList '-s nvcc_12.2 cublas_12.2 cublas_dev_12.2 cudart_12.2 curand_12.2 curand_dev_12.2 cusolver_12.2 cusolver_dev_12.2 cusparse_12.2 cusparse_dev_12.2' -Wait -NoNewWindow
 RUN copy 'cuda\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*' 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Microsoft\VC\v160\BuildCustomizations'
